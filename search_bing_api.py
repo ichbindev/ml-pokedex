@@ -17,7 +17,7 @@ args = vars(ap.parse_args())
 API_KEY = os.getenv('API_KEY')
 
 # number of results and page size
-MAX_RESULTS = 400
+MAX_RESULTS = 1000
 GROUP_SIZE = 50
 
 # set the endpoint API URL
