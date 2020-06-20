@@ -1,5 +1,9 @@
+# USAGE
+# python coremlconverter.py --model pokedex.model --labelbin lb.pickle
+
 # import necessary packages
 from keras.models import load_model
+import tensorflow as tf
 import coremltools
 import argparse
 import pickle
@@ -17,9 +21,10 @@ print("[INFO] loading class labels from label binarizer")
 lb = pickle.loads(open(args["labelbin"], "rb").read())
 class_labels = lb.classes_.tolist()
 print("[INFO] class labels: {}".format(class_labels))
+
 # load the trained convolutional neural network
 print("[INFO] loading model...")
-model = load_model(args["model"])
+model = tf.keras.models.qload_model(args["model"])
 
 # convert the model to coreml format
 print("[INFO] converting model")
